@@ -224,4 +224,12 @@ classDiagram
 
 **validasi input**
 
-![validasi](Dokumentasi/06-validasi.png)
+![validasi](Dokumentasi/06-validasi1.png)
+
+![validasi](Dokumentasi/06-validasi2.png)
+
+![validasi](Dokumentasi/06-validasi3.png)
+
+![validasi](Dokumentasi/06-validasi4.png)
+
+![validasi](Dokumentasi/06-validasi5.png)
