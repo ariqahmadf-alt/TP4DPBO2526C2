@@ -18,8 +18,6 @@ lewat satu jendela: **C**reate (tambah data), **R**ead (tampil di tabel), **U**p
 dan **D**elete (hapus data). Data disimpan sementara di dalam `ArrayList<Person>` (tanpa database),
 dan diisi data awal lewat method `populateList()`.
 
-Struktur kodenya mengikuti latihan ProductData, dengan tema **People**:
-
 | Latihan (ProductData) | Tugas (PeopleData) |
 | --------------------- | ------------------ |
 | `Product.java`        | `Person.java`      |
