@@ -26,14 +26,6 @@ Struktur kodenya mengikuti latihan ProductData, dengan tema **People**:
 | `ProductMenu.java`    | `PeopleMenu.java`  |
 | `ProductMenu.form`    | `PeopleMenu.form`  |
 
-Yang dikerjakan sesuai spesifikasi tugas:
-
-1. Tema People dengan **4 atribut awal**: ID, Nama, Tahun Lahir, Kategori.
-2. **Confirmation prompt** sebelum data dihapus.
-3. **Atribut baru: Golongan Darah** (`golonganDarah`), ditambahkan di class `Person`, di form, dan di
-   logika `PeopleMenu.java`. Component barunya berupa **`JRadioButton`** (bukan `JTextField`), sehingga
-   memenuhi **BONUS (+20)**.
-
 ## Penjelasan Atribut dan Method
 
 ### Class `Person` (`Person.java`)
