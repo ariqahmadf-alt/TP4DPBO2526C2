@@ -48,46 +48,46 @@ Model data satu orang.
 | `kategori`      | String | Kategori: Mahasiswa, Dosen, Tenaga Kependidikan, Alumni, Tamu     |
 | `golonganDarah` | String | **Atribut baru**: A, B, AB, atau O (dipilih lewat `JRadioButton`) |
 
-| Method                                                    | Keterangan                                |
-| --------------------------------------------------------- | ----------------------------------------- |
-| `Person()`                                                | Constructor kosong                        |
-| `Person(id, nama, tahunLahir, kategori, golonganDarah)`   | Constructor dengan semua atribut          |
-| `getId()`, `getNama()`, `getTahunLahir()`, `getKategori()`, `getGolonganDarah()` | Getter tiap atribut |
-| `setId()`, `setNama()`, `setTahunLahir()`, `setKategori()`, `setGolonganDarah()` | Setter tiap atribut |
+| Method                                                                           | Keterangan                       |
+| -------------------------------------------------------------------------------- | -------------------------------- |
+| `Person()`                                                                       | Constructor kosong               |
+| `Person(id, nama, tahunLahir, kategori, golonganDarah)`                          | Constructor dengan semua atribut |
+| `getId()`, `getNama()`, `getTahunLahir()`, `getKategori()`, `getGolonganDarah()` | Getter tiap atribut              |
+| `setId()`, `setNama()`, `setTahunLahir()`, `setKategori()`, `setGolonganDarah()` | Setter tiap atribut              |
 
 ### Class `PeopleMenu` (`PeopleMenu.java`, extends `JFrame`)
 
 Class utama yang berisi tampilan dan seluruh logika program.
 
-| Atribut              | Tipe                | Keterangan                                                      |
-| -------------------- | ------------------- | --------------------------------------------------------------- |
-| `selectedIndex`      | int                 | Index baris yang dipilih, `-1` berarti tidak ada yang dipilih   |
-| `listPerson`         | `ArrayList<Person>` | Menampung seluruh data person                                   |
-| `golonganDarahGroup` | `ButtonGroup`       | Memastikan hanya satu radio button golongan darah yang terpilih |
-| `mainPanel`, `titleLabel`, `idLabel`, `namaLabel`, `tahunLahirLabel`, `kategoriLabel`, `golonganDarahLabel` | `JPanel` / `JLabel` | Panel utama dan label tampilan |
-| `idField`, `namaField`, `tahunLahirField` | `JTextField`   | Input ID, nama, dan tahun lahir                                 |
-| `kategoriComboBox`   | `JComboBox<String>` | Pilihan kategori                                                |
-| `golonganDarahPanel`, `radioA`, `radioB`, `radioAB`, `radioO` | `JPanel` / `JRadioButton` | Pilihan golongan darah (atribut baru) |
-| `addUpdateButton`    | `JButton`           | Tombol **Add** (mode tambah) atau **Update** (mode ubah)        |
-| `cancelButton`       | `JButton`           | Tombol **Cancel**, mengosongkan form                            |
-| `deleteButton`       | `JButton`           | Tombol **Delete**, hanya tampil saat ada baris yang dipilih     |
-| `personTable`        | `JTable`            | Tabel yang menampilkan seluruh data                             |
+| Atribut                                                                                                     | Tipe                      | Keterangan                                                      |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------- | --------------------------------------------------------------- |
+| `selectedIndex`                                                                                             | int                       | Index baris yang dipilih, `-1` berarti tidak ada yang dipilih   |
+| `listPerson`                                                                                                | `ArrayList<Person>`       | Menampung seluruh data person                                   |
+| `golonganDarahGroup`                                                                                        | `ButtonGroup`             | Memastikan hanya satu radio button golongan darah yang terpilih |
+| `mainPanel`, `titleLabel`, `idLabel`, `namaLabel`, `tahunLahirLabel`, `kategoriLabel`, `golonganDarahLabel` | `JPanel` / `JLabel`       | Panel utama dan label tampilan                                  |
+| `idField`, `namaField`, `tahunLahirField`                                                                   | `JTextField`              | Input ID, nama, dan tahun lahir                                 |
+| `kategoriComboBox`                                                                                          | `JComboBox<String>`       | Pilihan kategori                                                |
+| `golonganDarahPanel`, `radioA`, `radioB`, `radioAB`, `radioO`                                               | `JPanel` / `JRadioButton` | Pilihan golongan darah (atribut baru)                           |
+| `addUpdateButton`                                                                                           | `JButton`                 | Tombol **Add** (mode tambah) atau **Update** (mode ubah)        |
+| `cancelButton`                                                                                              | `JButton`                 | Tombol **Cancel**, mengosongkan form                            |
+| `deleteButton`                                                                                              | `JButton`                 | Tombol **Delete**, hanya tampil saat ada baris yang dipilih     |
+| `personTable`                                                                                               | `JTable`                  | Tabel yang menampilkan seluruh data                             |
 
 Semua component di atas terhubung ke `PeopleMenu.form` lewat properti **field name**.
 
-| Method                  | Keterangan                                                                                                           |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `main()`                | Membuat window, mengatur ukuran, posisi di tengah layar, content pane, warna background, dan close operation         |
-| `PeopleMenu()`          | Constructor: mengisi list dan tabel, mengisi combo box, membuat `ButtonGroup`, menyembunyikan tombol delete, memasang semua listener |
-| `populateList()`        | Mengisi 10 data awal ke `listPerson`                                                                                 |
-| `setTable()`            | Membuat `DefaultTableModel` dari `listPerson` (kolom No, ID, Nama, Tahun Lahir, Kategori, Golongan Darah; sel tidak bisa diedit langsung) |
-| `refreshTable()`        | Memasang model terbaru ke `personTable` dan mengatur lebar kolom No                                                  |
-| `validasiForm(ignoreIndex)` | Memeriksa isi form, mengembalikan pesan error atau `null` jika valid                                             |
-| `getGolonganDarahTerpilih()` / `setGolonganDarahTerpilih()` | Mengambil / mengatur radio button golongan darah yang dipilih                        |
-| `insertData()`          | **Create**: validasi, tambahkan `Person` baru ke list, update tabel, bersihkan form                                  |
-| `updateData()`          | **Update**: validasi, ubah data `Person` pada `selectedIndex`, update tabel, bersihkan form                          |
-| `deleteData()`          | **Delete**: hapus data pada `selectedIndex`, update tabel, bersihkan form                                            |
-| `clearForm()`           | Mengosongkan form, mengembalikan tombol ke mode "Add", menyembunyikan tombol delete, dan mengatur `selectedIndex = -1` |
+| Method                                                      | Keterangan                                                                                                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `main()`                                                    | Membuat window, mengatur ukuran, posisi di tengah layar, content pane, warna background, dan close operation                              |
+| `PeopleMenu()`                                              | Constructor: mengisi list dan tabel, mengisi combo box, membuat `ButtonGroup`, menyembunyikan tombol delete, memasang semua listener      |
+| `populateList()`                                            | Mengisi 10 data awal ke `listPerson`                                                                                                      |
+| `setTable()`                                                | Membuat `DefaultTableModel` dari `listPerson` (kolom No, ID, Nama, Tahun Lahir, Kategori, Golongan Darah; sel tidak bisa diedit langsung) |
+| `refreshTable()`                                            | Memasang model terbaru ke `personTable` dan mengatur lebar kolom No                                                                       |
+| `validasiForm(ignoreIndex)`                                 | Memeriksa isi form, mengembalikan pesan error atau `null` jika valid                                                                      |
+| `getGolonganDarahTerpilih()` / `setGolonganDarahTerpilih()` | Mengambil / mengatur radio button golongan darah yang dipilih                                                                             |
+| `insertData()`                                              | **Create**: validasi, tambahkan `Person` baru ke list, update tabel, bersihkan form                                                       |
+| `updateData()`                                              | **Update**: validasi, ubah data `Person` pada `selectedIndex`, update tabel, bersihkan form                                               |
+| `deleteData()`                                              | **Delete**: hapus data pada `selectedIndex`, update tabel, bersihkan form                                                                 |
+| `clearForm()`                                               | Mengosongkan form, mengembalikan tombol ke mode "Add", menyembunyikan tombol delete, dan mengatur `selectedIndex = -1`                    |
 
 Validasi input pada `validasiForm()`:
 
@@ -198,13 +198,21 @@ classDiagram
 
 ![tampilan awal](Dokumentasi/01-awal.png)
 
-**tambah data (Create)**
+**tambah data sebelum (Create)**
 
-![create](Dokumentasi/02-create.png)
+![create](Dokumentasi/02-create1.png)
 
-**ubah data (Update)**
+**tambah data sesudah (Create)**
 
-![update](Dokumentasi/03-update.png)
+![create](Dokumentasi/02-create2.png)
+
+**ubah data sebelum (Update)**
+
+![update](Dokumentasi/03-update1.png)
+
+**ubah data sesudah (Update)**
+
+![update](Dokumentasi/03-update2.png)
 
 **konfirmasi sebelum hapus (Delete)**
 
